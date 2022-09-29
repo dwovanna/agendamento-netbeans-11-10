@@ -11,7 +11,7 @@ public class TesteObjetos {
 	public static void main(String[] args) {
 		
 		Especialidade e1 = new Especialidade("Cardiologia");
-//		e1.setNome("Cardiologista");
+		e1.setNome("Cardiologista");
 		e1.setDescricao("Não deixa ter um ataque");
 		
 		Especialidade e2 = new Especialidade();
@@ -23,9 +23,15 @@ public class TesteObjetos {
 //		JOptionPane.showMessageDialog(null, e1.getNome());
 		
 		Especialidade e3 = e1;
-//		e3.setNome("Qualquer coisa!");
+		e3.setNome("Qualquer coisa!");
 		
 //		JOptionPane.showMessageDialog(null, e1.getNome());
+
+//              Exibir a quantidade de especialidades 
+                System.out.println("TOTAL DE ESPECIALIDADES ------>" + e1.getContador());
+                System.out.println();
+
+        
 		
 		ArrayList<Especialidade> especialidades = new ArrayList<>();
 		especialidades.add(e1);
