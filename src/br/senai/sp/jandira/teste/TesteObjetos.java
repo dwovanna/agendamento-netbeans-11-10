@@ -3,41 +3,87 @@ package br.senai.sp.jandira.teste;
 import java.util.ArrayList;
 
 import br.senai.sp.jandira.AgendaApp;
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
+
+//import javax.swing.JOptionPane;
+
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 
 public class TesteObjetos {
 
 	public static void main(String[] args) {
+            
+                int[] a = {6, 9, 87, 35, 96};
+                int[] b = new int[4];
+                b[0] = 55;
+                b[1] = 55;
+                b[2] = 11;
+                b[2] = 99;
+                
+                int[][] c = {{4, 6, 5},
+                    {5, 9, 7},
+                    {1, 13, 3},
+                    {5, 5, 8}
+                };
+                
+                String[][] quitanda = {
+                    {"Banana", "Maçã", "Uva", "Morango"},
+                    {"Alface", "Couve", "Pepino", "Salsicha", "Pimentão", "Brocólis"},
+                    {"Abacate", "Tomate", "Jiló", "Abobrinha"},
+                };
+                
+                System.out.println("quitanda[1][4]");
+                
+                System.out.println(c[2][1]);
+                
+                        
+                System.out.println("******************************");
 		
 		Especialidade e1 = new Especialidade("Cardiologia");
-		e1.setNome("Cardiologista");
 		e1.setDescricao("Não deixa ter um ataque");
 		
 		Especialidade e2 = new Especialidade();
 		e2.setNome("Gastro");
 		e2.setDescricao("Cuida do sistema digestivo");
+                
+                Especialidade e3 = new Especialidade();
+		e3.setNome("Qualquer coisa!");
+                e3.setDescricao("Parte da medicina que estuda doenças da pele");
 		
 		Especialidade e4 = new Especialidade("Otorrino", "Cuida do ouvido");
-		
-//		JOptionPane.showMessageDialog(null, e1.getNome());
-		
-		Especialidade e3 = e1;
-		e3.setNome("Qualquer coisa!");
-		
-//		JOptionPane.showMessageDialog(null, e1.getNome());
-
-//              Exibir a quantidade de especialidades 
-                System.out.println("TOTAL DE ESPECIALIDADES ------>" + e1.getContador());
-                System.out.println();
-
-        
+                Especialidade e5 = new Especialidade("Especialidade 5!");
+                
 		
 		ArrayList<Especialidade> especialidades = new ArrayList<>();
 		especialidades.add(e1);
 		especialidades.add(e2);
 		especialidades.add(e3);
 		System.out.println(especialidades.size());
+                
+                EspecialidadeDAO.gravar(e1);
+                EspecialidadeDAO.gravar(e2);
+                
+                System.out.println("Tamanho ----> " +EspecialidadeDAO.getEspecialidades().size());
+                
+                EspecialidadeDAO.gravar(e3);
+                EspecialidadeDAO.gravar(e4);
+                
+                System.out.println("Tamanho ----> " +EspecialidadeDAO.getEspecialidades().size());
+                
+                System.out.println(EspecialidadeDAO.getEspecialidade(101).getNome());
+                
+                EspecialidadeDAO.exclui(102);
+                System.out.println("Tamanho ----> " +EspecialidadeDAO.getEspecialidades().size());
+                
+                System.out.println(EspecialidadeDAO.getEspecialidade(102).getNome());
+                
+                Especialidade correta = new Especialidade("Dermatologia", "Parte da medicina que cuida da pele");
+                correta.setCodigo(e3.getCodigo());
+                EspecialidadeDAO.atualizar(correta);
+                System.out.println(EspecialidadeDAO.getEspecialidade(102).getNome());
+                
+                
 		
 		//Imprimir no console o nome das especialidades do ArrayList
 		
@@ -93,6 +139,4 @@ public class TesteObjetos {
 
 	}
 
-
-	
 }

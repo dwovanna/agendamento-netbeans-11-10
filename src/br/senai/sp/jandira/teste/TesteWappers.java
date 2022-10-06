@@ -36,20 +36,18 @@ public static void main(String[] args) {
 		e4.setNome("Clínico geral");
 		e4.setDescricao("Sabe de tudo um pouco");
 		
-//		Especialidade[] especialidades = {e1, e2, e3, e4};
 		
 		Especialidade e5 = new Especialidade();
 		e5.setNome("Pediatria");
 		e5.setDescricao("Cuidado com crianças");
 		
-		//especialidades[4] = e5;
 		
 		especialidades.add(e4);
 		especialidades.add(e5);
 		
 		System.out.println(especialidades.size());
 		
-		//Valores inteiros
+		//Valores 
 		
 		ArrayList<Integer> notas = new ArrayList<>();
 		notas.add(8);
@@ -62,7 +60,7 @@ public static void main(String[] args) {
 		
 		System.out.println(especialidades.get(3).getNome());
 		
-		//Trocar nome da especialidade da posição 1 do Array
+		//Trocar nome da especialidade da posição 1 
 		
 		especialidades.get(1).setNome("Teste");
 		System.out.println(especialidades.get(1).getNome());

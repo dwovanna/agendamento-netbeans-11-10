@@ -26,7 +26,7 @@ public class Especialidade {
 	}
 	
 	
-	//Métodos de acessos aos atributos
+	//Métodos de acessar aos atributos
 	
 	public int getContador() {
         return contador;	
@@ -55,6 +55,14 @@ public class Especialidade {
 	public String getDescricao() {
 		return descricao;
 	} 
+
+    public Integer getCodigo() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public void setCodigo(Integer codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 	
 
 }
