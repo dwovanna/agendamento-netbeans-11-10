@@ -244,15 +244,15 @@ private void preencherTabela() {
     
     String[] titulos = {"Código", "Nome da Cidade","Estado"};
     DefaultTableModel modelo= new DefaultTableModel(dados, titulos);
-    tableEspecialidades.setModel(modelo);
+    
     
 }
+
+
+
+
+
+
+
+
 }
-
-
-
-
-
-
-}
-
