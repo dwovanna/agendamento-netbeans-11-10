@@ -4,7 +4,10 @@
  */
 package br.senai.sp.jandira.ui;
 
-import javax.swing.table.DefaultTableModel;
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 
 /**
  *
@@ -17,7 +20,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
      */
     public EspecialidadesPanel() {
         initComponents();
-        EspecialidadeDao.criarListaDeEspecialidades();
+        EspecialidadeDAO.criarListaDeEspecialidades();
         preencherTabela();
     }
 
@@ -32,11 +35,11 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEspecialidades = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttonExcluir = new javax.swing.JButton();
+        buttonEditar = new javax.swing.JButton();
+        buttonNovo = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de Especialidades"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de especialidades:"));
         setPreferredSize(new java.awt.Dimension(800, 310));
         setLayout(null);
 
@@ -66,64 +69,96 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(10, 30, 780, 210);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/x (1).png"))); // NOI18N
-        jButton3.setText("Excluir");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/x (1).png"))); // NOI18N
+        buttonExcluir.setText("Excluir");
+        buttonExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                buttonExcluirActionPerformed(evt);
             }
         });
-        add(jButton3);
-        jButton3.setBounds(480, 250, 90, 40);
+        add(buttonExcluir);
+        buttonExcluir.setBounds(480, 250, 90, 40);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/lapis.png"))); // NOI18N
-        jButton2.setText("Editar");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/lapis.png"))); // NOI18N
+        buttonEditar.setText("Editar");
+        buttonEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonEditarActionPerformed(evt);
             }
         });
-        add(jButton2);
-        jButton2.setBounds(590, 250, 90, 40);
+        add(buttonEditar);
+        buttonEditar.setBounds(590, 250, 90, 40);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/nova-pagina.png"))); // NOI18N
-        jButton1.setText("Novo");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/nova-pagina.png"))); // NOI18N
+        buttonNovo.setText("Novo");
+        buttonNovo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buttonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonNovoActionPerformed(evt);
             }
         });
-        add(jButton1);
-        jButton1.setBounds(700, 250, 90, 40);
+        add(buttonNovo);
+        buttonNovo.setBounds(700, 250, 90, 40);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
+        int linha = tableEspecialidades.getSelectedRow();
+       if (linha != -1) {
+           excluirEspecialidade(linha);
+       } else {
+           JOptionPane.showMessageDialog(this, "Por favor, selecione a especialidade que voce deseja exccluir!", "Atenção", JOptionPane.WARNING_MESSAGE);
+       }
+    }//GEN-LAST:event_buttonExcluirActionPerformed
+       
+    private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
+         
+    }//GEN-LAST:event_buttonEditarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
+       EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+       especialidadeDialog.setVisible(true);
+       preencherTabela();
+    }//GEN-LAST:event_buttonNovoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-
+    private void excluirEspecialidade(int linha){
+         String codigoStr = tableEspecialidades.getValueAt(linha, 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr);
+        
+        
+        
+        EspecialidadeDAO.exclui(codigo);
+        
+        preencherTabela();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton buttonEditar;
+    private javax.swing.JButton buttonExcluir;
+    private javax.swing.JButton buttonNovo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableEspecialidades;
     // End of variables declaration//GEN-END:variables
 
     private void preencherTabela() {
       
-        tableEspecialidades.setModel(EspecialidadeDao.getEspecialidadesModel());
+        tableEspecialidades.setModel(EspecialidadeDAO.getEspecialidadesModel());
+        ajustarTabela();
 
     }
+    
+    private void ajustarTabela() {
+        // impedir que o usuário movimente as colunas 
+        tableEspecialidades.getTableHeader().setReorderingAllowed(false);
+        // bloquear a edição das celulas da tabela
+        tableEspecialidades.setDefaultEditor(Object.class, null);
+        
+        // Definir largura das colunas
+        tableEspecialidades.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tableEspecialidades.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tableEspecialidades.getColumnModel().getColumn(1).setPreferredWidth(250);
+        tableEspecialidades.getColumnModel().getColumn(2).setPreferredWidth(427);
+        
+    }
+    
 }

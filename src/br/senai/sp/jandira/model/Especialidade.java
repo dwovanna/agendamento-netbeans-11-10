@@ -3,66 +3,66 @@ package br.senai.sp.jandira.model;
 import javax.swing.JOptionPane;
 
 public class Especialidade {
-        private int contador;
-	private Integer codigo;
-	private String nome;
-	private String descricao;
-	
-	//construtor
-	
-	public Especialidade(String nome) {
-		this.nome = nome;
-                this.contador++;
-	}
-	
-	public Especialidade(String nome, String descricao) {
-		this.nome = nome;
-                this.contador++;
-                
-	}
-	
-	public Especialidade() {
-		this.contador++;
-	}
-	
-	
-	//Métodos de acessar aos atributos
-	
-	public int getContador() {
-        return contador;	
-	}
+
+    private static int contador;
+    private Integer codigo;
+    private String nome;
+    private String descricao;
+
+    //construtor
+    public Especialidade(String nome) {
+        this.nome = nome;
+        this.contador++;
+        this.codigo = contador;
+    }
+
+    public Especialidade(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.contador++;
+        this.codigo = contador;
+    }
+
+    public Especialidade() {
+        this.contador++;
+        this.codigo = contador;
+    }
+
+    //Métodos de acessar aos atributos
+    public int getContador() {
+        return contador;
+    }
 
     public void setNome(String nome) {
-        if(nome.length() >= 3) {
+        if (nome.length() >= 3) {
             this.nome = nome;
         } else {
             JOptionPane.showMessageDialog(null, nome + " não é um nome válido.\nDeve conter pelo menos 3 letras!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
-	
-	public String getNome() {
-		return nome;
-	}
-	
-	public void setDescricao(String descricao) {
-		if(descricao.length() >= 10) {
-		this.descricao = descricao;
-		} else {
-			JOptionPane.showMessageDialog(null, "A descrição deve conter pelo menos 10 caracteres!", "Erro", JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	
-	public String getDescricao() {
-		return descricao;
-	} 
 
-    public Integer getCodigo() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setDescricao(String descricao) {
+        if (descricao.length() >= 10) {
+            this.descricao = descricao;
+        } else {
+            JOptionPane.showMessageDialog(null, "A descrição deve conter pelo menos 10 caracteres!", "Erro", JOptionPane.OK_OPTION);
+        }
+    }
+
+    public String getDescricao() {
+        return this.descricao;
     }
 
     public void setCodigo(Integer codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        this.codigo = codigo;
     }
-	
+
+    public Integer getCodigo() {
+        return codigo;
+    }
 
 }

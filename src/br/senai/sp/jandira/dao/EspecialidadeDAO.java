@@ -65,9 +65,10 @@ public class EspecialidadeDAO {
         String[] titulos = {"CODIGO", "NOME DA ESPECIALIDADE", "DESCRIÇÃO"};
 
         String[][] dados = new String[especialidades.size()][3];
-
+        
+        int i = 0;
         for (Especialidade e : especialidades) {
-            int i = 0;
+            
             dados[i][0] = e.getCodigo().toString();
             dados[i][1] = e.getNome();
             dados[i][2] = e.getDescricao();
