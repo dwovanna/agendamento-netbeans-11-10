@@ -2,30 +2,67 @@ package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.OperacaoEnum;
 import java.awt.Frame;
 import java.awt.TextField;
 import javax.swing.JOptionPane;
 
 public class EspecialidadeDialog extends javax.swing.JDialog {
 
-    public EspecialidadeDialog(Frame parent, boolean modal) {
+    private Especialidade especialidade;
+    private OperacaoEnum operacao;
+
+    public EspecialidadeDialog(java.awt.Frame parent, boolean modal, OperacaoEnum operacao) {
         super(parent, true);
         initComponents();
+
+        this.operacao = operacao;
+
+        preencherTitulo();
+
+    }
+
+    public EspecialidadeDialog(java.awt.Frame parent, boolean modal, Especialidade e, OperacaoEnum operacao) {
+        super(parent, true);
+        initComponents();
+
+        especialidade = e;
+        this.operacao = operacao;
+        preencherFormulario();
+        preencherTitulo();
+
+    }
+
+    private void preencherFormulario() {
+        TextFieldCodigo.setText(especialidade.getCodigo().toString());
+        textFieldNomeEspecialidade.setText(especialidade.getNome());
+        textFieldDescricaoEspecialidade.setText(especialidade.getDescricao());
+
+    }
+
+    private void preencherTitulo() {
+        labelEspecialidade.setText("Especialidade - " + operacao);
+
+        if (operacao == OperacaoEnum.EDITAR) {
+            labelEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/editar.png")));
+        } else {
+            labelEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/adicionar.png")));
+        }
     }
 
     @SuppressWarnings("unchecked")
-    
-    
+
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        EspecialidadesAdicionar = new javax.swing.JLabel();
+        labelEspecialidade = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         NomeCodigo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TextFieldCodigo = new javax.swing.JTextField();
         NomeEspecialidade = new javax.swing.JLabel();
         textFieldNomeEspecialidade = new javax.swing.JTextField();
         DescricaoEspecialidade = new javax.swing.JLabel();
@@ -49,9 +86,9 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setForeground(new java.awt.Color(204, 204, 255));
 
-        EspecialidadesAdicionar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        EspecialidadesAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/adicionar (1).png"))); // NOI18N
-        EspecialidadesAdicionar.setText("ESPECIALIDADES - ADICONAR");
+        labelEspecialidade.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/adicionar (1).png"))); // NOI18N
+        labelEspecialidade.setText("ESPECIALIDADES - ADICONAR");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -59,14 +96,14 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(EspecialidadesAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(EspecialidadesAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                .addComponent(labelEspecialidade, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -75,11 +112,11 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         NomeCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         NomeCodigo.setText("Código");
 
-        jTextField1.setEditable(false);
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldCodigo.setEditable(false);
+        TextFieldCodigo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TextFieldCodigoActionPerformed(evt);
             }
         });
 
@@ -131,7 +168,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
                     .addComponent(DescricaoEspecialidade)
                     .addComponent(NomeEspecialidade)
                     .addComponent(NomeCodigo)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldNomeEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldDescricaoEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(338, Short.MAX_VALUE))
@@ -148,7 +185,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
                 .addGap(28, 28, 28)
                 .addComponent(NomeCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(NomeEspecialidade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,61 +236,62 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-      
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void TextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldCodigoActionPerformed
+
+    }//GEN-LAST:event_TextFieldCodigoActionPerformed
 
     private void textFieldNomeEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNomeEspecialidadeActionPerformed
-       
+
     }//GEN-LAST:event_textFieldNomeEspecialidadeActionPerformed
 
     private void textFieldDescricaoEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDescricaoEspecialidadeActionPerformed
-       
+
     }//GEN-LAST:event_textFieldDescricaoEspecialidadeActionPerformed
 
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
-      Especialidade d = new Especialidade();
-      
+        dispose();
+
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
-       Especialidade especialidade = new Especialidade();
-       especialidade.setNome(textFieldNomeEspecialidade.getText());
-       especialidade.setDescricao(textFieldDescricaoEspecialidade.getText());
-       
-        EspecialidadeDAO.gravar(especialidade);
+        if (operacao == OperacaoEnum.ADICIONAR) {
+            adicionar();
+        } else {
+            editar();
+        }
+    }//GEN-LAST:event_ButtonSalvarActionPerformed
+    private void editar() {
+        especialidade.setNome(textFieldNomeEspecialidade.getText());
+        especialidade.setDescricao(textFieldDescricaoEspecialidade.getText());
+
+        EspecialidadeDAO.atualizar(especialidade);
+        JOptionPane.showMessageDialog(null, "Especialidade atualizada com sucesso!", "Especialidades", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+    }
+
+    private void adicionar() {
+        Especialidade novaEspecialidade = new Especialidade();
+        novaEspecialidade.setNome(textFieldNomeEspecialidade.getText());
+        novaEspecialidade.setDescricao(textFieldDescricaoEspecialidade.getText());
+
+        EspecialidadeDAO.gravar(novaEspecialidade);
         JOptionPane.showMessageDialog(null, "Especialidade gravada com sucesso", "Especialidade", JOptionPane.INFORMATION_MESSAGE);
         dispose();
-    }//GEN-LAST:event_ButtonSalvarActionPerformed
-
-    public static void main(String args[]) {
-      
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                EspecialidadeDialog dialog = new EspecialidadeDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCancelar;
     private javax.swing.JButton ButtonSalvar;
     private javax.swing.JLabel DescricaoEspecialidade;
-    private javax.swing.JLabel EspecialidadesAdicionar;
     private javax.swing.JLabel NomeCodigo;
     private javax.swing.JLabel NomeEspecialidade;
+    private javax.swing.JTextField TextFieldCodigo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelEspecialidade;
     private javax.swing.JTextField textFieldDescricaoEspecialidade;
     private javax.swing.JTextField textFieldNomeEspecialidade;
     // End of variables declaration//GEN-END:variables

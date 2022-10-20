@@ -15,7 +15,7 @@ public class EspecialidadeDAO {
 
     public static Especialidade getEspecialidade(Integer codigo) {
         for (Especialidade e : especialidades) {
-            if (Objects.equals(codigo, e.getCodigo())) {
+            if (e.getCodigo() == codigo) {
                 return e;
             }
         }
@@ -81,4 +81,9 @@ public class EspecialidadeDAO {
         return model;
     }
 
+    public static void excluir(Integer codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+ 
 }
