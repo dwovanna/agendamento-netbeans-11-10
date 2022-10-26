@@ -90,7 +90,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tableEspecialidades1">
+            <Component class="javax.swing.JTable" name="tablePlanoDeSaude">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="5">
@@ -134,7 +134,7 @@
     <Component class="javax.swing.JButton" name="buttonEditar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/senai/sp/jandira/imagem/lapis.png"/>
+          <Image iconType="3" name="/br/senai/sp/jandira/imagem/editar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Editar"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

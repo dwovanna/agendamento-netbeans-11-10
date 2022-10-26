@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 public class HomeFrame extends javax.swing.JFrame {
     
     private EspecialidadesPanel especialidadesPanel;
+    PlanodeSaudePanel plano;
     
     private final int POS_X = 20;
     private final int POS_Y = 200;
@@ -17,6 +18,9 @@ public class HomeFrame extends javax.swing.JFrame {
         initPanels();
 
     }
+    
+    EspecialidadesPanel panelEspecialidades;
+    //PlanodeSaudePanel planoDeSaudePanel;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -34,12 +38,12 @@ public class HomeFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        ButtonSair = new javax.swing.JButton();
         ButtonEspecialidades = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        ButtonMedicos = new javax.swing.JButton();
+        ButtonPlanoDeSaude = new javax.swing.JButton();
+        ButtonAgenda = new javax.swing.JButton();
+        ButtonPaciente = new javax.swing.JButton();
         ButtonHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,16 +110,16 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 840, 101);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/pular.png"))); // NOI18N
-        jButton5.setText("Sair");
-        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/pular.png"))); // NOI18N
+        ButtonSair.setText("Sair");
+        ButtonSair.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                ButtonSairActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(770, 110, 60, 26);
+        getContentPane().add(ButtonSair);
+        ButtonSair.setBounds(770, 110, 60, 26);
 
         ButtonEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/gestao.png"))); // NOI18N
         ButtonEspecialidades.setText("Especialidadades");
@@ -128,44 +132,44 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(ButtonEspecialidades);
         ButtonEspecialidades.setBounds(560, 120, 130, 50);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/do-utilizador.png"))); // NOI18N
-        jButton7.setText("Médicos");
-        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        ButtonMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/do-utilizador.png"))); // NOI18N
+        ButtonMedicos.setText("Médicos");
+        ButtonMedicos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ButtonMedicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                ButtonMedicosActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7);
-        jButton7.setBounds(320, 120, 90, 50);
+        getContentPane().add(ButtonMedicos);
+        ButtonMedicos.setBounds(320, 120, 90, 50);
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/cartao-de-credito.png"))); // NOI18N
-        jButton8.setText("Plano de Saúde");
-        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        ButtonPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/cartao-de-credito.png"))); // NOI18N
+        ButtonPlanoDeSaude.setText("Plano de Saúde");
+        ButtonPlanoDeSaude.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ButtonPlanoDeSaude.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                ButtonPlanoDeSaudeActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8);
-        jButton8.setBounds(420, 120, 130, 50);
+        getContentPane().add(ButtonPlanoDeSaude);
+        ButtonPlanoDeSaude.setBounds(420, 120, 130, 50);
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/contrato (1).png"))); // NOI18N
-        jButton9.setText("Agenda");
-        jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jButton9);
-        jButton9.setBounds(120, 120, 90, 50);
+        ButtonAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/contrato (1).png"))); // NOI18N
+        ButtonAgenda.setText("Agenda");
+        ButtonAgenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(ButtonAgenda);
+        ButtonAgenda.setBounds(120, 120, 90, 50);
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/publico.png"))); // NOI18N
-        jButton10.setText("Paciente");
-        jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        ButtonPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/publico.png"))); // NOI18N
+        ButtonPaciente.setText("Paciente");
+        ButtonPaciente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ButtonPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                ButtonPacienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10);
-        jButton10.setBounds(220, 120, 90, 50);
+        getContentPane().add(ButtonPaciente);
+        ButtonPaciente.setBounds(220, 120, 90, 50);
 
         ButtonHome.setBackground(new java.awt.Color(204, 204, 255));
         ButtonHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/casa.png"))); // NOI18N
@@ -182,9 +186,9 @@ public class HomeFrame extends javax.swing.JFrame {
         setBounds(0, 0, 855, 536);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
        
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_ButtonSairActionPerformed
 
     private void ButtonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEspecialidadesActionPerformed
         ButtonEspecialidades.setBackground(new java.awt.Color(204, 204, 255));
@@ -194,17 +198,22 @@ public class HomeFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ButtonEspecialidadesActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void ButtonPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPacienteActionPerformed
     
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_ButtonPacienteActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-      
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void ButtonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPlanoDeSaudeActionPerformed
+      ButtonPlanoDeSaude.setBackground(new java.awt.Color(204, 204, 255));
+        ButtonHome.setBackground(new java.awt.Color(255, 255, 255));
+        panelHome.setVisible(false);
+        //planoDeSaudePanel.setVisible(false);
+        plano.setVisible(true);
         
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_ButtonPlanoDeSaudeActionPerformed
+
+    private void ButtonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMedicosActionPerformed
+        
+    }//GEN-LAST:event_ButtonMedicosActionPerformed
 
     private void ButtonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHomeActionPerformed
         ButtonHome.setBackground(new java.awt.Color(204, 204, 255));
@@ -216,13 +225,13 @@ public class HomeFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonAgenda;
     private javax.swing.JButton ButtonEspecialidades;
     private javax.swing.JButton ButtonHome;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton ButtonMedicos;
+    private javax.swing.JButton ButtonPaciente;
+    private javax.swing.JButton ButtonPlanoDeSaude;
+    private javax.swing.JButton ButtonSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -242,6 +251,13 @@ public class HomeFrame extends javax.swing.JFrame {
         especialidadesPanel.setBounds(POS_X, POS_Y, LARGURA, ALTURA);
         getContentPane().add(especialidadesPanel);
         especialidadesPanel.setVisible(true);
+        
+        plano = new PlanodeSaudePanel();
+        plano.setBounds(POS_X, POS_Y, LARGURA, ALTURA);
+        getContentPane().add(plano);
+        plano.setVisible(true);
+        
+        
     }
 
 }

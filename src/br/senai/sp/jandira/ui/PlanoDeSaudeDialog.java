@@ -226,7 +226,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         TextFieldOperadora.setText(planoDeSaude.getOperadora());
         TextFieldCategoria.setText(planoDeSaude.getCategoria());
         TextFieldNumero.setText(planoDeSaude.getNumero());
-        TextFieldValidade.setText(planoDeSaude.getValidade().toString());
+        TextFieldValidade.setText(planoDeSaude.getValidade().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
     private void preencherTitulo() {
@@ -241,13 +241,12 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
     }
     
       private void editar() {
-        PlanoDeSaude novoPlanoDeSaude = new PlanoDeSaude();
-        novoPlanoDeSaude.setOperadora(TextFieldOperadora.getText());
-        novoPlanoDeSaude.setCategoria(TextFieldCategoria.getText());
-        novoPlanoDeSaude.setNumero(TextFieldNumero.getText());
-        novoPlanoDeSaude.setValidade(LocalDate.parse(TextFieldValidade.getText(), DateTimeFormatter.ISO_DATE));
+        planoDeSaude.setOperadora(TextFieldOperadora.getText());
+        planoDeSaude.setCategoria(TextFieldCategoria.getText());
+        planoDeSaude.setNumero(TextFieldNumero.getText());
+        planoDeSaude.setValidade(LocalDate.parse(TextFieldValidade.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
-        PlanoDeSaudeDAO.atualizar(novoPlanoDeSaude);
+        PlanoDeSaudeDAO.atualizar(planoDeSaude);
         JOptionPane.showMessageDialog(null, "Plano de Saúde gravada com sucesso", "Especialidade", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }
@@ -257,7 +256,7 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         novoPlanoDeSaude.setOperadora(TextFieldOperadora.getText());
         novoPlanoDeSaude.setCategoria(TextFieldCategoria.getText());
         novoPlanoDeSaude.setNumero(TextFieldNumero.getText());
-        novoPlanoDeSaude.setValidade(LocalDate.parse(TextFieldValidade.getText(), DateTimeFormatter.ISO_DATE));
+        novoPlanoDeSaude.setValidade(LocalDate.parse(TextFieldValidade.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
         PlanoDeSaudeDAO.gravar(novoPlanoDeSaude);
         JOptionPane.showMessageDialog(null, "Plano de Saúde gravada com sucesso", "Especialidade", JOptionPane.INFORMATION_MESSAGE);

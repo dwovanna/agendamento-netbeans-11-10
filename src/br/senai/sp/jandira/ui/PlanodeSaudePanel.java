@@ -1,17 +1,17 @@
 
 package br.senai.sp.jandira.ui;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
-import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.OperacaoEnum;
+import br.senai.sp.jandira.model.PlanoDeSaude;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
-public class PlanodeSaude extends javax.swing.JPanel {
+public class PlanodeSaudePanel extends javax.swing.JPanel {
     
     private int linha;
 
-    public PlanodeSaude() {
+    public PlanodeSaudePanel() {
         initComponents();
         PlanoDeSaudeDAO.criarListaDePlanoDeSaude();
         preencherTabela();
@@ -25,7 +25,7 @@ public class PlanodeSaude extends javax.swing.JPanel {
         tableEspecialidades = new javax.swing.JTable();
         PanelPlanoDeSaude = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableEspecialidades1 = new javax.swing.JTable();
+        tablePlanoDeSaude = new javax.swing.JTable();
         buttonNovo = new javax.swing.JButton();
         buttonEditar = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
@@ -58,7 +58,7 @@ public class PlanodeSaude extends javax.swing.JPanel {
 
         PanelPlanoDeSaude.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Plano de Saúde", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        tableEspecialidades1.setModel(new javax.swing.table.DefaultTableModel(
+        tablePlanoDeSaude.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,8 +78,8 @@ public class PlanodeSaude extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tableEspecialidades1.setToolTipText("");
-        jScrollPane2.setViewportView(tableEspecialidades1);
+        tablePlanoDeSaude.setToolTipText("");
+        jScrollPane2.setViewportView(tablePlanoDeSaude);
 
         javax.swing.GroupLayout PanelPlanoDeSaudeLayout = new javax.swing.GroupLayout(PanelPlanoDeSaude);
         PanelPlanoDeSaude.setLayout(PanelPlanoDeSaudeLayout);
@@ -109,7 +109,7 @@ public class PlanodeSaude extends javax.swing.JPanel {
         add(buttonNovo);
         buttonNovo.setBounds(710, 260, 80, 30);
 
-        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/lapis.png"))); // NOI18N
+        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/editar.png"))); // NOI18N
         buttonEditar.setText("Editar");
         buttonEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,8 +133,8 @@ public class PlanodeSaude extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, OperacaoEnum.ADICIONAR);
-        especialidadeDialog.setVisible(true);
+        PlanoDeSaudeDialog planoDeSaudeDialog = new PlanoDeSaudeDialog(null, true, OperacaoEnum.ADICIONAR);
+        planoDeSaudeDialog.setVisible(true);
         preencherTabela();
     }//GEN-LAST:event_buttonNovoActionPerformed
 
@@ -152,7 +152,7 @@ public class PlanodeSaude extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        
+         linha = tablePlanoDeSaude.getSelectedRow();
         if (getLinha() != -1) {
             excluirPlanoDeSaude();
         } else {
@@ -169,33 +169,61 @@ public class PlanodeSaude extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableEspecialidades;
-    private javax.swing.JTable tableEspecialidades1;
+    private javax.swing.JTable tablePlanoDeSaude;
     // End of variables declaration//GEN-END:variables
 
     private void preencherTabela() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        tablePlanoDeSaude.setModel(PlanoDeSaudeDAO.getPlanoDeSaudeModel());
+        ajustarTabela();
     }
-
-    private int getLinha() {
-     
+    
+     private void ajustarTabela() {
+        // impedir que o usuário movimente as colunas 
+        tablePlanoDeSaude.getTableHeader().setReorderingAllowed(false);
+        // bloquear a edição das celulas da tabela
+        tablePlanoDeSaude.setDefaultEditor(Object.class, null);
+        
+        // Definir largura das colunas
+        tablePlanoDeSaude.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tablePlanoDeSaude.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tablePlanoDeSaude.getColumnModel().getColumn(1).setPreferredWidth(250);
+        tablePlanoDeSaude.getColumnModel().getColumn(2).setPreferredWidth(427);
+        
+    }
     
 
 
+   
+
+
     private void excluirPlanoDeSaude() {
-        Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
+        PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
         
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, especialidade, OperacaoEnum.EDITAR);
-        especialidadeDialog.setVisible(true);
+        PlanoDeSaudeDialog planoDeSaudeDialog = new PlanoDeSaudeDialog(null, true, planoDeSaude, OperacaoEnum.EDITAR);
+        planoDeSaudeDialog.setVisible(true);
         preencherTabela();
     }
 
     private void editarPlanoDeSaude() {
-         Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
+         PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
         
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, especialidade, OperacaoEnum.EDITAR);
-        especialidadeDialog.setVisible(true);
+        PlanoDeSaudeDialog planoDeSaudeDialog = new PlanoDeSaudeDialog(null, true, planoDeSaude, OperacaoEnum.EDITAR);
+        planoDeSaudeDialog.setVisible(true);
         preencherTabela();
     }
 
     private Integer getCodigo() {
+    String codigoStr = tablePlanoDeSaude.getValueAt(getLinha(), 0).toString();
+           Integer codigo = Integer.valueOf(codigoStr);
+           return codigo;
+    
 
+
+    
+}
+
+    private int getLinha() {
+          linha = tablePlanoDeSaude.getSelectedRow();
+        return linha;
+    }
+}

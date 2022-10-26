@@ -74,7 +74,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         add(buttonExcluir);
         buttonExcluir.setBounds(480, 250, 90, 40);
 
-        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/lapis.png"))); // NOI18N
+        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagem/editar.png"))); // NOI18N
         buttonEditar.setText("Editar");
         buttonEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {

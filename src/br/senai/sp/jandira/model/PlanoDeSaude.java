@@ -7,17 +7,27 @@ public class PlanoDeSaude {
 	private String operadora;
 	private String categoria;
 	private String numero;
+        private Integer codigo;
 	private LocalDate validade;
 	private static int quantidade;
 	
-	public PlanoDeSaude(String operadora) {
+	public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
 		this.operadora = operadora;
-		this.quantidade++;
+                this.categoria = categoria;
+                this.numero = numero;
+                this.validade = validade;		
+                gerarCodigo();
 	}
 	
 	public PlanoDeSaude() {
 		this.quantidade++;	
+                gerarCodigo();
 	}
+
+    public PlanoDeSaude(String operadora) {
+        this.operadora = operadora;
+        gerarCodigo();
+    }
 	
 	
 	//Métodos de acessos aos atributos
@@ -58,9 +68,21 @@ public class PlanoDeSaude {
 		return quantidade;
 	}
 
-    public Object getCodigo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Integer getCodigo() {
+        return codigo;
     }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+    
+    private void gerarCodigo(){
+        this.codigo++;
+        this.codigo = codigo;
+    }
+        
+
+    
 	
 	
 }

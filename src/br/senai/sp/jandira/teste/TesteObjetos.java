@@ -113,9 +113,9 @@ public class TesteObjetos {
 		
 		//criar 3 planos de saúde, e armazenar em um ArrayList e exibir o nome da operadora de cada um deles usando o FOR EACH
 		
-		PlanoDeSaude p1 = new PlanoDeSaude("Amil");
-		PlanoDeSaude p2 = new PlanoDeSaude("Unimed");
-		PlanoDeSaude p3 = new PlanoDeSaude("Notredame");
+		PlanoDeSaude p1 = new PlanoDeSaude();
+		PlanoDeSaude p2 = new PlanoDeSaude();
+		PlanoDeSaude p3 = new PlanoDeSaude();
 		
 		ArrayList<PlanoDeSaude> planosDeSaude = new ArrayList<>();
 		planosDeSaude.add(p1);
