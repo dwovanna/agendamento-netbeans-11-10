@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Objects;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
@@ -81,10 +82,17 @@ public class EspecialidadeDAO {
             while(linha != null) {
                 String[] vetor = linha.split(";");
                 Especialidade e = new Especialidade(vetor[1], vetor[2], Integer.valueOf(vetor[0]));
+                
+                // Guardar a especialidade na lista
+                especialidades.add(e);
+                // ler a próxima linha
+                linha = leitor.readLine();
+                
             }
             
             
         } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
         }
         Especialidade e1 = new Especialidade("Cardiologia", "Parte da medicina que cuida do coração");
         Especialidade e2 = new Especialidade("Nefrologia", "Parte da medicina que cuida do rim");

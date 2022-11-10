@@ -19,6 +19,7 @@ public class Especialidade {
         this.nome = nome;
         this.descricao = descricao;
         this.codigo = codigo;
+        this.contador = codigo;
     }
 
     public Especialidade() {
