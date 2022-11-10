@@ -79,7 +79,8 @@ public class EspecialidadeDAO {
             String linha = leitor.readLine();
             
             while(linha != null) {
-                
+                String[] vetor = linha.split(";");
+                Especialidade e = new Especialidade(vetor[1], vetor[2], Integer.valueOf(vetor[0]));
             }
             
             
