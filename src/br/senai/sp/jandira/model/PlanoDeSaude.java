@@ -10,6 +10,8 @@ public class PlanoDeSaude {
         private Integer codigo;
 	private LocalDate validade;
 	private static int quantidade;
+    private String descricao;
+    private String nome;
 	
 	public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
 		this.operadora = operadora;
@@ -80,9 +82,9 @@ public class PlanoDeSaude {
         this.quantidade++;
         this.codigo = quantidade;
     }
-        
-
     
-	
+     public String getPlanoDeSaudeSeparadaPorPontoEVirgula() {
+        return this.codigo + ";" + this.nome + ";" + this.descricao;
+    }
 	
 }

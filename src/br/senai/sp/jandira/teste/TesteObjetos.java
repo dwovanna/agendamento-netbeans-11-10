@@ -40,7 +40,7 @@ public class TesteObjetos {
                         
                 System.out.println("******************************");
 		
-		Especialidade e1 = new Especialidade("Cardiologia");
+		Especialidade e1 = new Especialidade("Cardiologia", "Parte da medicina que cuida do cora\u00e7\u00e3o");
 		e1.setDescricao("Não deixa ter um ataque");
 		
 		Especialidade e2 = new Especialidade();
@@ -52,7 +52,7 @@ public class TesteObjetos {
                 e3.setDescricao("Parte da medicina que estuda doenças da pele");
 		
 		Especialidade e4 = new Especialidade("Otorrino", "Cuida do ouvido");
-                Especialidade e5 = new Especialidade("Especialidade 5!");
+                Especialidade e5 = new Especialidade("Especialidade 5!", "Parte da medicina que cuida do cora\u00e7\u00e3o");
                 
 		
 		ArrayList<Especialidade> especialidades = new ArrayList<>();

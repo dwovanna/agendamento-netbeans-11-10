@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
     
-    private final static String URL = "C:\\Users\\22282185\\Especialidade.txt";
+    private final static String URL = "C:\\Users\\22282185\\java";
     private final  static Path PATH = Paths.get(URL);
 
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
@@ -72,6 +73,18 @@ public class EspecialidadeDAO {
 
     // Criar lista inicial de especialidades
     public static void criarListaDeEspecialidades() {
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            
+            String linha = leitor.readLine();
+            
+            while(linha != null) {
+                
+            }
+            
+            
+        } catch (IOException e) {
+        }
         Especialidade e1 = new Especialidade("Cardiologia", "Parte da medicina que cuida do coração");
         Especialidade e2 = new Especialidade("Nefrologia", "Parte da medicina que cuida do rim");
         Especialidade e3 = new Especialidade("Otorronolaringologia", "Parte da medicina que cuida de doenças no ouvido");
@@ -107,6 +120,12 @@ public class EspecialidadeDAO {
 
     public static void excluir(Integer codigo) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static class BuffereReader {
+
+        public BuffereReader() {
+        }
     }
 
  

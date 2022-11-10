@@ -15,7 +15,7 @@ public static void main(String[] args) {
 		
 		ArrayList<Especialidade> especialidades = new ArrayList<>();
 		
-		Especialidade e1 = new Especialidade("Cardiologia");
+		Especialidade e1 = new Especialidade("Cardiologia", "Parte da medicina que cuida do cora\u00e7\u00e3o");
 		e1.setNome("Cardiologista");
 		e1.setDescricao("Não deixa ter um ataque");
 		

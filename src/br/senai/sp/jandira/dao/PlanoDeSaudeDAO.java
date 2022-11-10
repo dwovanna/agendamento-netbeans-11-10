@@ -4,6 +4,13 @@ package br.senai.sp.jandira.dao;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import br.senai.sp.jandira.ui.PlanodeSaudePanel;
+import static com.sun.tools.javac.code.Lint.LintCategory.PATH;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -13,6 +20,9 @@ import static sun.jvm.hotspot.HelloWorld.e;
 
 
 public class PlanoDeSaudeDAO {
+    
+    private final static String URL = "C:\\Users\\22282185\\java";
+    private final  static Path PATH = Paths.get(URL);
     
     private static ArrayList<PlanoDeSaude> planoDeSaude = new ArrayList<>();
     private static int titulo;
@@ -34,6 +44,20 @@ public class PlanoDeSaudeDAO {
 
     public static void gravar(PlanoDeSaude e) {
         planoDeSaude.add(e);
+         //*** GRAVAR EM ARQUIVO  ***
+        try {
+            BufferedWriter escritor;
+            escritor = Files.newBufferedWriter(PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+                 
+            
+            escritor.write(e.getPlanoDeSaudeSeparadaPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+            
+        } catch (IOException erro) {
+        }
     }
     
      public static void exclui(Integer codigo) {

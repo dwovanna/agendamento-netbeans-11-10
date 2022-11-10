@@ -10,15 +10,15 @@ public class Especialidade {
     private String descricao;
 
     //construtor
-    public Especialidade(String nome) {
+    public Especialidade(String nome, String parte_da_medicina_que_cuida_do_coração) {
         this.nome = nome;
         gerarCodigo();
     }
 
-    public Especialidade(String nome, String descricao) {
+    public Especialidade(String nome, String descricao, Integer codigo) {
         this.nome = nome;
         this.descricao = descricao;
-        gerarCodigo();
+        this.codigo = codigo;
     }
 
     public Especialidade() {
