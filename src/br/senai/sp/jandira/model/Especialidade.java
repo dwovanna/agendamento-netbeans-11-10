@@ -58,6 +58,10 @@ public class Especialidade {
     public String getDescricao() {
         return this.descricao;
     }
+    public String getEspecialidadeSeparadaPorPontoEVirgula() {
+        return this.codigo + ";" + this.nome + ";" + this.descricao;
+    }
+
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
@@ -68,3 +72,4 @@ public class Especialidade {
     }
 
 }
+

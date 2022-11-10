@@ -77,8 +77,8 @@ public class PlanoDeSaude {
     }
     
     private void gerarCodigo(){
-        this.codigo++;
-        this.codigo = codigo;
+        this.quantidade++;
+        this.codigo = quantidade;
     }
         
 

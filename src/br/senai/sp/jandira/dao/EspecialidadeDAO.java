@@ -1,11 +1,20 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
+    
+    private final static String URL = "C:\\Users\\22282185\\Especialidade.txt";
+    private final  static Path PATH = Paths.get(URL);
 
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
 
@@ -25,6 +34,21 @@ public class EspecialidadeDAO {
 
     public static void gravar(Especialidade e) {
         especialidades.add(e);
+        
+        //*** GRAVAR EM ARQUIVO  ***
+        try {
+            BufferedWriter escritor;
+            escritor = Files.newBufferedWriter(
+                    PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            
+            escritor.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+            
+        } catch (IOException erro) {
+        }
     }
 
     public static void exclui(Integer codigo) {
